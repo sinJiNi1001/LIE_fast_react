@@ -342,7 +342,9 @@ export default function App() {
                       <span style={{ fontSize: '22px' }}>🔄</span>
                       <div>
                         <div style={{ fontWeight: '700', color: '#b45309', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Repeat Lead Detected</div>
-                        <div style={{ color: '#78350f', marginTop: '2px' }}><b>{resultMeta.companyName}</b> enquired <b>{aiResult.previous_enquiry.time_ago}</b> — Past decision: <b>{aiResult.previous_enquiry.decision}</b> · Quote: <b>₹{Number(aiResult.previous_enquiry.suggested_price || 0).toLocaleString()}</b></div>
+                        <div style={{ color: '#78350f', marginTop: '2px' }}>
+                          <b>{resultMeta.companyName}</b> enquired about <b>{aiResult.previous_enquiry.service_type}</b> <b>{aiResult.previous_enquiry.time_ago}</b> — Past decision: <b>{aiResult.previous_enquiry.decision}</b> · Quote: <b>₹{Number(aiResult.previous_enquiry.suggested_price || 0).toLocaleString()}</b>
+                        </div>
                       </div>
                     </div>
                   )}

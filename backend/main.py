@@ -110,7 +110,7 @@ def check_previous_enquiry(company_name, website):
         with get_db_connection() as conn:
             cursor = conn.cursor()
             cursor.execute("""
-                SELECT timestamp, decision, suggested_price 
+                SELECT timestamp, decision, suggested_price, service_type 
                 FROM leads 
                 WHERE company_name LIKE ? OR website LIKE ? 
                 ORDER BY timestamp DESC LIMIT 1
@@ -457,7 +457,8 @@ async def analyze(data: LeadRequest):
             prev_data = {
                 "time_ago": get_time_ago(prev_enq['timestamp']),
                 "decision": prev_enq['decision'],
-                "suggested_price": prev_enq['suggested_price']
+                "suggested_price": prev_enq['suggested_price'],
+                "service_type": prev_enq['service_type']
             }
 
         if DEV_MODE:
